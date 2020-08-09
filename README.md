@@ -6,6 +6,7 @@ Note: Inspired by [wfuzz](https://github.com/xmendez/wfuzz), I wanted to develop
 ## Features
   - Fuzz GET requests for an URL using a wordlist
   - Colored response by response codes to make it easier to find meaningful responses!
+  - Concurred requests made using fasthttp, resulting in quick fuzzing!
 
 ## Install
 Installing is really easy. First make sure your go environment is set up, including `$GOPATH` and `$GOPATH/bin`. Then, git clone this repo. 
@@ -15,11 +16,13 @@ Installing is really easy. First make sure your go environment is set up, includ
 
 ## Usage
 ### Flags:
-  - `-X="GET"` string (default "GET")
-  - `-url="https://example.com/FUZZ"` string *Required*
-  - `-wordlist=/PATH/TO/WORDLIST/FILE` string *Required*
+  - `-X="GET"` string (default "GET") - Request type
+  - `-url="https://example.com/FUZZ"` string *Required* - The URL to fuzz, note that the word `FUZZ` will be replaced in the URL by words from th wordlist for each request
+  - `-wordlist=/PATH/TO/WORDLIST/FILE` string *Required* - The wordlist to use
+  - `-c=100` int (default 100) - Number of concurrent requests to make, defaults to 100. Must be a number between 1 and 200.
+
 ### Sample usage:
-`go-url-fuzz -X=GET -url="https://www.google.com/?q=FUZZ" -wordlist=/path/to/wordlist.txt`
+`go-url-fuzz -X=GET -url="https://www.google.com/?q=FUZZ" -wordlist=/path/to/wordlist.txt -c 150`
 
 
 ## Coming soon:
