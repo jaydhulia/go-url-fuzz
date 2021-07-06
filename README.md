@@ -1,6 +1,8 @@
 # go-url-fuzz
 Fuzz URLs in Go! Just a fun tool I am developing as a way learn Go and to fuzz URLs in Go. Find those hidden directories on websites that developers forgot to remove! 
 
+Given an URL containing the word `FUZZ` and a wordlist, it fuzzes the URL, replacing `FUZZ` in the URL with words from the wordlist.
+
 Note: Inspired by [wfuzz](https://github.com/xmendez/wfuzz), I wanted to develop a similar fuzzer in Go, while learning Go!
 
 ## Features
@@ -15,11 +17,19 @@ Installing is really easy. First make sure your go environment is set up, includ
 - `go-url-fuzz --help`
 
 ## Usage
-### Flags:
-  - `-X="GET"` string (default "GET") - Request type
-  - `-url="https://example.com/FUZZ"` string *Required* - The URL to fuzz, note that the word `FUZZ` will be replaced in the URL by words from th wordlist for each request
-  - `-wordlist=/PATH/TO/WORDLIST/FILE` string *Required* - The wordlist to use
-  - `-c=100` int (default 100) - Number of concurrent requests to make, defaults to 100. Must be a number between 1 and 200.
+```
+go-url-fuzz [flags]
+```
+
+### Options
+
+```
+  -c, --concurrency int   path to a file containing wordlist to fuzz through (default 100)
+  -h, --help              help for go-url-fuzz
+  -X, --type string       request type (currently only GET supported) (default "GET")
+  -u, --url string        URL to fuzz, for example: "https://example.com/FUZZ" 
+  -w, --wordlist string   path to a file containing wordlist to fuzz through
+```
 
 ### Sample usage:
 `go-url-fuzz -X=GET -url="https://www.google.com/?q=FUZZ" -wordlist=/path/to/wordlist.txt -c 150`
