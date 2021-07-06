@@ -34,7 +34,7 @@ go-url-fuzz [flags]
 ```
 
 ### Sample usage:
-`go-url-fuzz -X=GET -url="https://www.google.com/?q=FUZZ" -wordlist=/path/to/wordlist.txt -c 150`
+`go-url-fuzz -u https://jaydhulia.com/FUZZ -w test.txt -s 403,404 -c 150`
 
 
 ## Coming soon:
