@@ -34,7 +34,7 @@ go-url-fuzz [flags]
 ```
 
 ### Sample usage:
-`go-url-fuzz -u https://jaydhulia.com/FUZZ -w test.txt -s 403,404 -c 150`
+`go-url-fuzz -u https://jaydhulia.com/FUZZ -w test.txt -s 403 -s 404 -c 150`
 
 
 ## Coming soon:
