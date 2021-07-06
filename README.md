@@ -28,7 +28,7 @@ go-url-fuzz [flags]
   -c, --concurrency int   path to a file containing wordlist to fuzz through (default 100)
   -h, --help              help for go-url-fuzz
   -s, --show ints         example: show 200,204,300
-  -X, --type string       request type (currently only GET supported) (default "GET")
+  -X, --type string       request type (currently only GET, OPTIONS, HEAD supported) (default "GET")
   -u, --url string        URL to fuzz, for example: "https://example.com/FUZZ" 
   -w, --wordlist string   path to a file containing wordlist to fuzz through
 ```

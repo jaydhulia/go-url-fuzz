@@ -19,7 +19,7 @@ var (
 )
 
 func init() {
-	rootCmd.Flags().StringVarP(&config.AppConfiguration.RequestType, "type", "X", config.DefaultRequestType, "request type (currently only GET supported)")
+	rootCmd.Flags().StringVarP(&config.AppConfiguration.RequestType, "type", "X", config.DefaultRequestType, "request type (currently only GET, OPTIONS, HEAD supported)")
 	rootCmd.Flags().StringVarP(&config.AppConfiguration.URL, "url", "u", "", "URL to fuzz, for example: \"https://example.com/FUZZ\" ")
 	rootCmd.MarkFlagRequired("url")
 	rootCmd.Flags().StringVarP(&config.AppConfiguration.Wordlist, "wordlist", "w", "", "path to a file containing wordlist to fuzz through")
