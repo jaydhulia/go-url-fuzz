@@ -1,17 +1,7 @@
 package main
 
-import (
-	"log"
-
-	"github.com/go-url-fuzz/config"
-	"github.com/go-url-fuzz/requests"
-)
+import "github.com/go-url-fuzz/cmd"
 
 func main() {
-	if err := config.ParseFlags(); err != nil {
-		log.Fatalf(err.Error())
-	}
-	if err := requests.Execute(); err != nil {
-		log.Fatalf(err.Error())
-	}
+	cmd.Execute()
 }
