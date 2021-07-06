@@ -9,6 +9,7 @@ Note: Inspired by [wfuzz](https://github.com/xmendez/wfuzz), I wanted to develop
   - Fuzz GET requests for an URL using a wordlist
   - Colored response by response codes to make it easier to find meaningful responses!
   - Concurred requests made using fasthttp, resulting in quick fuzzing!
+  - Only show requests that return certain response codes! (`-s / --show flag`)
 
 ## Install
 Installing is really easy. First make sure your go environment is set up, including `$GOPATH` and `$GOPATH/bin`. Then, git clone this repo. 
@@ -26,6 +27,7 @@ go-url-fuzz [flags]
 ```
   -c, --concurrency int   path to a file containing wordlist to fuzz through (default 100)
   -h, --help              help for go-url-fuzz
+  -s, --show ints         example: show 200,204,300
   -X, --type string       request type (currently only GET supported) (default "GET")
   -u, --url string        URL to fuzz, for example: "https://example.com/FUZZ" 
   -w, --wordlist string   path to a file containing wordlist to fuzz through
