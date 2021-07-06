@@ -3,6 +3,7 @@ package requests
 import (
 	"fmt"
 
+	"github.com/go-url-fuzz/config"
 	"github.com/gookit/color"
 )
 
@@ -20,6 +21,13 @@ func init() {
 // TODO: add more colors based on responses
 func outputResult(responseCode int, URL string) {
 	defer wg.Done()
+	// if user has specified a show codes flag
+	if config.AppConfiguration.ShowCodesMap != nil {
+		// code is not in allowed list
+		if _, ok := config.AppConfiguration.ShowCodesMap[responseCode]; !ok {
+			return
+		}
+	}
 	red := color.FgRed.Render
 	green := color.FgGreen.Render
 	cyan := color.FgCyan.Render

@@ -24,6 +24,7 @@ func init() {
 	rootCmd.MarkFlagRequired("url")
 	rootCmd.Flags().StringVarP(&config.AppConfiguration.Wordlist, "wordlist", "w", "", "path to a file containing wordlist to fuzz through")
 	rootCmd.MarkFlagRequired("wordlist")
+	rootCmd.Flags().IntSliceVarP(&config.AppConfiguration.ShowCodes, "show", "s", config.DefaultShowCodes, "example: show 200,204,300")
 	rootCmd.Flags().IntVarP(&config.AppConfiguration.Concurrency, "concurrency", "c", config.DefaultConcurrentThreads, "path to a file containing wordlist to fuzz through")
 }
 
@@ -35,5 +36,12 @@ func Execute() {
 }
 
 func runMain(cmd *cobra.Command, args []string) error {
+	if len(config.AppConfiguration.ShowCodes) > 0 {
+		config.AppConfiguration.ShowCodesMap = make(map[int]int)
+		for _, val := range config.AppConfiguration.ShowCodes {
+			config.AppConfiguration.ShowCodesMap[val] = 1
+		}
+	}
+
 	return requests.Execute()
 }
